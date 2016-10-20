@@ -89,8 +89,8 @@ LinkedList.prototype.clear = function() {
     let node = this._tail;
     while (node != null) {
       if (node._next != null) node._next = null;
-			   if (node._prev != null) node = node._prev;
-			   else node = null;
+      if (node._prev != null) node = node._prev;
+      else node = null;
     }
     this._head = null;
     this._tail = null;
