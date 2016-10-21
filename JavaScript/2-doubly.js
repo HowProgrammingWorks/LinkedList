@@ -6,9 +6,9 @@
 //     _next - pointer to the next node
 //
 function Node(data) {
-  this._data = data;
-  this._prev = null;
-  this._next = null;
+  this.data = data;
+  this.prev = null;
+  this.next = null;
 }
 
 // Implentation of the LinkedList
@@ -18,9 +18,9 @@ function Node(data) {
 //     _tail - pointer to the last node
 //
 function LinkedList(...args) {
-  this._length = 0;
-  this._head = null;
-  this._tail = null;
+  this.length = 0;
+  this.head = null;
+  this.tail = null;
   if (args.length > 0) this.extend(args);  
 }
 
@@ -29,11 +29,11 @@ function LinkedList(...args) {
 //
 LinkedList.prototype.append = function(data) {
   let node = new Node(data);
-  node._prev = this._tail;
-  if (this._length === 0) this._head = node;
-  else this._tail._next = node;
-  this._tail = node;
-  this._length++;
+  node.prev = this.tail;
+  if (this.length === 0) this.head = node;
+  else this.tail.next = node;
+  this.tail = node;
+  this.length++;
   return node;
 };
 
@@ -49,12 +49,12 @@ LinkedList.prototype.extend = function(...args) {
 // Function for printing current LinkedList
 //
 LinkedList.prototype.print = function() {
-  if (this._length > 0) {
-    let node = this._head;
-    console.dir(node._data);
-    while (node._next != null) {
-      node = node._next;
-      console.dir(node._data);
+  if (this.length > 0) {
+    let node = this.head;
+    console.dir(node.data);
+    while (node.next != null) {
+      node = node.next;
+      console.dir(node.data);
     }
   } else {
     console.log('list is empty');
@@ -64,19 +64,19 @@ LinkedList.prototype.print = function() {
 // Function that returns current LinkedList length
 //
 LinkedList.prototype.length = function() {
-  return this._length;
+  return this.length;
 };
 
 // Function for pulling last element from the LinkedList
 //
 LinkedList.prototype.pop = function() {
-  if (this._length > 0) {
-    let node = this._tail;
-    this._tail = node._prev;
-    node._prev = null;
-    node._next = null;
-    this._length--;
-    return node._data;
+  if (this.length > 0) {
+    let node = this.tail;
+    this.tail = node.prev;
+    node.prev = null;
+    node.next = null;
+    this.length--;
+    return node.data;
   } else {
     console.log('list is empty');
   }
@@ -85,16 +85,16 @@ LinkedList.prototype.pop = function() {
 // Function that remove all elements from the LinkedList
 //
 LinkedList.prototype.clear = function() {
-  if (this._length > 0) {
-    let node = this._tail;
+  if (this.length > 0) {
+    let node = this.tail;
     while (node != null) {
-      if (node._next != null) node._next = null;
-      if (node._prev != null) node = node._prev;
+      if (node.next != null) node.next = null;
+      if (node.prev != null) node = node.prev;
       else node = null;
     }
-    this._head = null;
-    this._tail = null;
-    this._length = 0;
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   } else {
     console.log('list is empty');
   }
@@ -105,15 +105,15 @@ LinkedList.prototype.clear = function() {
 //   id2 - index of second element
 //
 LinkedList.prototype.swap = function(id1, id2) {
-  let node1 = this._head;
-  let node2 = this._head;
+  let node1 = this.head;
+  let node2 = this.head;
   for (let i = 0; i < id1; i++) {
-    node1 = node1._next;
+    node1 = node1.next;
   }
   for (let j = 0; j < id2; j++) {
-    node2 = node2._next;
+    node2 = node2.next;
   }
-  let tmp = node1._data;
-  node1._data = node2._data;
-  node2._data = tmp;
+  let tmp = node1.data;
+  node1.data = node2.data;
+  node2.data = tmp;
 };
