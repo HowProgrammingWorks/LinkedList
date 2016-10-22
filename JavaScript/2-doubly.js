@@ -1,9 +1,9 @@
 'use strict';
 
 // Node of the doubly-linked list
-//   _data - value of the list element
-//     _prev - pointer to the previus node
-//     _next - pointer to the next node
+//   data - value of the list element
+//     prev - pointer to the previus node
+//     next - pointer to the next node
 //
 function Node(data) {
   this.data = data;
@@ -13,9 +13,9 @@ function Node(data) {
 
 // Implentation of the LinkedList
 //   args - array of values the LinkedList will be initialized with
-//     _length - size of the list
-//     _head - pointer to the first node
-//     _tail - pointer to the last node
+//     length - size of the list
+//     head - pointer to the first node
+//     tail - pointer to the last node
 //
 function LinkedList(...args) {
   this.length = 0;
