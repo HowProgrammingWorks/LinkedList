@@ -7,7 +7,7 @@ function LinkedList() {
 }
 
 LinkedList.prototype.push = function(data) {
-  let node = new Node(this, data);
+  const node = new Node(this, data);
   node.prev = this.last;
   if (this.length === 0) this.first = node;
   else this.last.next = node;
@@ -18,7 +18,7 @@ LinkedList.prototype.push = function(data) {
 
 LinkedList.prototype.pop = function() {
   if (this.length > 0) {
-    let node = this.last;
+    const node = this.last;
     this.last = node.prev;
     node.list = null;
     node.prev = null;
@@ -35,7 +35,7 @@ function Node(list, data) {
   this.next = null;
 }
 
-let list = new LinkedList();
+const list = new LinkedList();
 list.push({ name: 'first' });
 list.push({ name: 'second' });
 list.push({ name: 'third' });
