@@ -19,7 +19,7 @@ class LinkedList {
   }
 
   push(data) {
-    let currentNode = this.last;
+    const currentNode = this.last;
     const newNode = new Node(this, data);
     newNode.prev = currentNode;
     if (this.length === 0) this.first = newNode;
