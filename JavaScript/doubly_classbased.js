@@ -1,52 +1,51 @@
-'use strict'
+'use strict';
 
 
 class Node {
 
-  constructor(data, prev, next){
+  constructor(data, prev, next) {
     this.data = data;
     this.prev = prev || null;
     this.next = next || null;
   }
 
-  toString(){
+  toString() {
     let repr = this.data;
     if (this.next) {
       repr += ' -> ' + this.next.toString();
     }
     return repr;
   }
-
 }
 
 
-class LinkedList{
+class LinkedList {
 
-  constructor(){
+  constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
 
-  toString(){
-    if (this.head){
-      return this.head.toString()
-    }
-    return 'Empty list';
+  toString() {
+    if (!this.head) return;
+    return this.head.toString();
   }
 
-  print(){
-    console.log(this.toString())
+  print() {
+    console.log(this.toString());
+  }
+
+  isEmpty() {
+    return !!this.length;
   }
 
 
   push(data) {
-    let node = new Node(data)
-    if (this.length === 0){
+    if (this.length === 0) {
       this.head = new Node(data);
       this.tail = this.head;
-    }
-    else {
+    } else {
       this.tail.next = new Node(data, this.tail);
       this.tail = this.tail.next;
     }
@@ -54,10 +53,11 @@ class LinkedList{
     return this;
   }
 
-  pop(){
-    if(!this.tail){
-      throw Error('Pop from empty list')
+  pop() {
+    if (!this.tail) {
+      return;
     }
+
     let data = this.tail.data;
     this.tail = this.tail.prev;
     this.tail.next = null;
@@ -67,8 +67,8 @@ class LinkedList{
 
   findFirst(data) {
     let current = this.head;
-    while (current !== null) {
-      if (current.data === data){
+    while (current) {
+      if (current.data === data) {
         return current;
       }
       current = current.next;
@@ -78,9 +78,9 @@ class LinkedList{
 
   findAll(data) {
     let current = this.head;
-    let nodes = []
-    while (current !== null) {
-      if (current.data === data){
+    let nodes = [];
+    while (current) {
+      if (current.data === data) {
         nodes.push(current);
       }
       current = current.next;
@@ -90,8 +90,8 @@ class LinkedList{
 
   find(data, callback) {
     let current = this.head;
-    while (current !== null) {
-      if (current.data === data){
+    while (current) {
+      if (current.data === data) {
         callback(current);
       }
       current = current.next;
@@ -100,11 +100,9 @@ class LinkedList{
 
   findReg(regex) {
     let current = this.head;
-    let nodes = []
-    while (current !== null) {
-      if (current.data
-          .toString()
-          .match(regex)){
+    let nodes = [];
+    while (current) {
+      if (current.data.toString().match(regex)) {
         nodes.push(current);
       }
       current = current.next;
@@ -114,8 +112,8 @@ class LinkedList{
 
   map(func) {
     let current = this.head;
-    while (current !== null) {
-      current.data = func(current.data)
+    while (current) {
+      current.data = func(current.data);
       current = current.next;
     }
     return this;
@@ -124,9 +122,9 @@ class LinkedList{
   filter(func) {
     let filtered = new LinkedList();
     let current = this.head;
-    while (current !== null) {
-      if (func(current.data)){
-        filtered.push(current.data)
+    while (current) {
+      if (func(current.data)) {
+        filtered.push(current.data);
       }
       current = current.next;
     }
@@ -137,9 +135,33 @@ class LinkedList{
     let reduced = this.head.data || null;
     let current = this.head;
     while (current && current.next) {
-      reduced = func(reduced, current.next.data)
+      reduced = func(reduced, current.next.data);
       current = current.next;
     }
     return reduced;
+  }
+
+  flatten() {
+  /*
+  Flatten the list
+  from
+    element1 -> LinkedList(element2, LinkedList(element3)) -> element4
+  to
+    element1 -> element2 -> element3 -> element4
+  */
+    let current = this.head;
+    while (current) {
+      if (typeof(current.data) === 'LinkedList') {
+        current.data = current.data.flatten();
+        while (!current.data.isEmpty()) {
+          let temp = current.data.pop();
+          temp.prev = current.prev;
+          temp.next = current.next;
+          current.prev.next = current.next.prev = temp;
+        }
+      }
+      current = current.next;
+    }
+    return this;
   }
 }
