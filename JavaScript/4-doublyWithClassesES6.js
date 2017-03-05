@@ -1,5 +1,15 @@
 'use strict';
 
+class Node {
+  constructor(list, data) {
+    this.list = list;
+    this.data = data;
+    this.prev = null;
+    this.next = null;
+  }
+}
+
+
 class LinkedList {
 
   constructor() {
@@ -16,14 +26,14 @@ class LinkedList {
     else currentNode.next = newNode;
     this.last = newNode;
     this.length++;
-    return newNode;  
+    return newNode;
   }
 
   pop() {
     if (this.length > 0) {
       const node = this.last;
       this.last = node.prev;
-      if ( this.last !== null) this.last.next = null;
+      if (this.last) this.last.next = null;
       node.list = null;
       node.prev = null;
       this.length--;
@@ -32,14 +42,7 @@ class LinkedList {
   }
 }
 
-class Node {
-  constructor(list, data) {
-    this.list = list;
-    this.data = data;
-    this.prev = null;
-    this.next = null;
-  }
-}
+
 
 
 const list = new LinkedList();
