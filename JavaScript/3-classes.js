@@ -46,8 +46,8 @@ class LinkedList {
 
   searchPos(searchPosition) {
 
-    let current = this.first,
-        position = 0;
+    let current = this.first;
+    let position = 0;
 
     if (this.length === 0 ||
         searchPosition < 0 ||
@@ -64,8 +64,8 @@ class LinkedList {
   }
 
   remove(removePosition) {
-    let current = this.first,
-        position = 0;
+    let current = this.first;
+    let position = 0;
 
     if (this.length < 0 || removePosition >= this.length) {
       throw new Error('Position out of bounds.');
@@ -133,7 +133,7 @@ list1.push('second', 5);
 console.dir(list1.findFirst('first'));
 console.dir(list1.findAll('second'));
 list1.find('second', n => console.log(n));
-console.dir(list1.searchPos(-2));
+//console.dir(list1.searchPos(-2));
 console.dir(list1.searchPos(1));
 
 console.dir(list1);
