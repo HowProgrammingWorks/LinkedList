@@ -44,41 +44,39 @@ class LinkedList {
 
   }
 
-  searchPos(searchPosition) {
+  itemAtPos(pos) {
 
     let current = this.first;
-    let position = 0;
+    let counter = 0;
 
-    if (this.length === 0 ||
-        searchPosition < 0 ||
-        searchPosition >= this.length) {
-      throw new Error('Position out of bounds.');
+    if (!(this.length) || pos < 0 || pos >= this.length) {
+      return false;
     }
 
-    while (position < searchPosition) {
+    while (counter < pos) {
       current = current.next;
-      ++position;
+      ++counter;
     }
 
     return current;
   }
 
-  remove(removePosition) {
+  remove(remPos) {
     let current = this.first;
     let position = 0;
 
-    if (this.length < 0 || removePosition >= this.length) {
-      throw new Error('Position out of bounds.');
+    if (this.length < 0 || remPos >= this.length) {
+      return false;
     }
 
-    if (removePosition === 0) {
+    if (remPos === 0) {
       this.first = current.next;
       this.first.prev = null;
       this.length--;
       return;
     }
 
-    while (position < removePosition) {
+    while (position < remPos) {
       current = current.next;
       ++position;
     }
@@ -91,7 +89,7 @@ class LinkedList {
   findFirst(name) {
     let current = this.first;
 
-    while (current !== null && current.name !== name) {
+    while (current && current.name !== name) {
       current = current.next;
     }
     return current;
@@ -130,12 +128,12 @@ list1.push('second', 2);
 list1.push('third', 3);
 list1.push('second', 5);
 
-console.dir(list1.findFirst('first'));
-console.dir(list1.findAll('second'));
-list1.find('second', n => console.log(n));
-//console.dir(list1.searchPos(-2));
-console.dir(list1.searchPos(1));
+// console.dir(list1.findFirst('first'));
+// console.dir(list1.findAll('second'));
+// list1.find('second', n => console.log(n));
+// //console.dir(list1.searchPos(-2));
+console.dir(list1.itemAtPos(1));
 
-console.dir(list1);
-list1.remove(0);
-console.dir(list1);
+// console.dir(list1);
+// list1.remove(0);
+// console.dir(list1);
