@@ -1,5 +1,14 @@
 'use strict';
 
+class Node {
+  constructor(list, data) {
+    this.list = list;
+    this.data = data;
+    this.prev = null;
+    this.next = null;
+  }
+}
+
 class LinkedList {
   constructor() {
     this.first = null;
@@ -13,7 +22,7 @@ class LinkedList {
     else this.last.next = node;
     this.last = node;
     this.length++;
-    return node;  
+    return node;
   }
   pop() {
     if (this.length > 0) {
@@ -26,14 +35,31 @@ class LinkedList {
       return node.data;
     }
   }
-}
-
-class Node{
-  constructor(list, data) {
-    this.list = list;
-    this.data = data;
-    this.prev = null;
-    this.next = null;
+  findFirst(name) {
+    if (this.length > 0) {
+      let node = this.first;
+      if (node.data.name === name)
+        return node;
+      while (node !== this.last) {
+        node = node.next;
+        if (node.data.name === name)
+          return node;
+      }
+    }
+  }
+  findAll(name) {
+    const nodeArray = [];
+    if (this.length > 0) {
+      let node = this.first;
+      if (node.data.name === name)
+        nodeArray.push(node);
+      while (node !== this.last) {
+        node = node.next;
+        if (node.data.name === name)
+          nodeArray.push(node);
+      }
+    }
+    return nodeArray;
   }
 }
 
