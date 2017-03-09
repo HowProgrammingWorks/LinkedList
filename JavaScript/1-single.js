@@ -1,39 +1,48 @@
 'use strict';
 
-function LeftLinkedNode(prev, data) {
-  this.prev = prev;
+function Node(next, data) {
+  this.next = next;
   this.data = data;
 }
 
-LeftLinkedNode.prototype.foreach = function(f) {
-  f(this.data);
-  if (this.prev !== null)
-    this.prev.foreach(f);
-};
-
-const ln1 = new LeftLinkedNode(null, { name: 'first' });
-const ln2 = new LeftLinkedNode(ln1, { name: 'second' });
-const ln3 = new LeftLinkedNode(ln2, { name: 'third' });
-
-ln3.foreach((d)=>{ console.dir(d); });
-
-function RightLinkedNode(prev, data) {
-  this.next = null;
-  if (prev !== null)
-    prev.next = this;
-  this.data = data;
+function List() {
+  this.first = null;
 }
 
-RightLinkedNode.prototype.foreach = function(f) {
-  f(this.data);
-  if (this.next !== null)
-    this.next.foreach(f);
+List.prototype.pushFront = function(data){
+  this.first = new Node(this.first, data);
 };
 
-const rn1 = new RightLinkedNode(null, { name: 'first' });
-const rn2 = new RightLinkedNode(rn1, { name: 'second' });
-const rn3 = new RightLinkedNode(rn2, { name: 'third' });
+List.prototype.forEach = function(func){
+  let i = this.first;
+  while (i){
+    func(i.data);
+    i = i.next;
+  }
+}
 
-rn1.foreach((d)=>{ console.dir(d); });
+List.prototype.pop = function(){
+  if (!this.first) throw 'Null pointer exception';
+  let temp = this.first;
+  this.first = this.first.next;
+  return temp.data;
+}
 
+List.prototype.top = function(){
+  if (!this.first) throw 'Null pointer exception';
+  return this.first.data;
+}
 
+let testList = new List();
+
+testList.pushFront(1);
+testList.pushFront(2);
+testList.pushFront(3);
+
+testList.forEach(console.dir);
+
+console.dir(testList.top());
+console.dir(testList.top());
+console.dir(testList.pop());
+console.dir(testList.pop());
+console.dir(testList.pop());
