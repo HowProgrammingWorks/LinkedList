@@ -9,29 +9,29 @@ function List() {
   this.first = null;
 }
 
-List.prototype.pushFront = function(data){
+List.prototype.pushFront = function(data) {
   this.first = new Node(this.first, data);
 };
 
-List.prototype.forEach = function(func){
+List.prototype.forEach = function(func) {
   let i = this.first;
-  while (i){
+  while (i) {
     func(i.data);
     i = i.next;
   }
-}
+};
 
-List.prototype.pop = function(){
+List.prototype.pop = function() {
   if (!this.first) throw 'Null pointer exception';
   let temp = this.first;
   this.first = this.first.next;
   return temp.data;
-}
+};
 
-List.prototype.top = function(){
+List.prototype.top = function() {
   if (!this.first) throw 'Null pointer exception';
   return this.first.data;
-}
+};
 
 let testList = new List();
 
