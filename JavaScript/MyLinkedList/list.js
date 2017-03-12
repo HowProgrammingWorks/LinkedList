@@ -1,11 +1,11 @@
 //Constructor for list element - Node
-function Node(prev, next, value){
+function Node(prev, next, value) {
   this.prev = prev;
   this.next = next;
   this.value = value;
 }
 //Constructor for LinkedList
-function LinkedList(){
+function LinkedList() {
    this.head = null;
 }
 //--------------------Add--------------------
@@ -15,8 +15,7 @@ LinkedList.prototype.unshift = (...args) => {
   var prev = null;
   var next = this.head;
 
-  console.log("args length: " + args.length);
-  for (let i = args.length - 1; i >= 0; i--){
+  for (let i = args.length - 1; i >= 0; i--) {
       current = new Node(prev, next, args[i]);
       next = current;
   }
@@ -41,7 +40,7 @@ LinkedList.prototype.insert = (index, value) => {
   let current = this.head;
   let i = 0;
 
-  while(current.next != null && index != i){
+  while (current.next != null && index != i) {
     current = current.next;
     i++;
   }
@@ -63,10 +62,10 @@ LinkedList.prototype.insert = (index, value) => {
 //Append elements to the end of list
 LinkedList.prototype.append = (...args) => {
   let current = this.head;
-  while (current.next != null){
+  while (current.next != null) {
     current = current.next;
   }
-  for (let i = 0; i < args.length; i++){
+  for (let i = 0; i < args.length; i++) {
     LinkedList.prototype.add(args[i]);
   }
 };
@@ -106,7 +105,7 @@ LinkedList.prototype.find = (value, callback) => {
 
   var comparator;
 
-  if (value instanceof RegExp){
+  if (value instanceof RegExp) {
     comparator = (current) => { return value.test(current.value); };
   } else {
     comparator = (current) => { return current.value == value; };
@@ -116,25 +115,23 @@ LinkedList.prototype.find = (value, callback) => {
     if (comparator(current)) {
       callback(current.value);
     }
-
     current = current.next;
   } while(current != null);
 };
 //Add array of elements to the end of list
 LinkedList.prototype.append = (...args) => {
   let current = this.head;
-  while (current.next != null){
+  while (current.next != null) {
     current = current.next;
   }
-  for (let i = 0; i < args.length; i++){
+  for (let i = 0; i < args.length; i++) {
     LinkedList.prototype.add(args[i]);
   }
 };
 //--------------------Print--------------------
 LinkedList.prototype.print = () => {
   let current = this.head;
-  while (current != null)
-  {
+  while (current != null) {
     console.log(current.value);
     current = current.next;
   }
@@ -148,10 +145,10 @@ LinkedList.prototype.shift = () => {
     else{
       var returnVal = this.head.value;
 
-      if (this.head.next == null){
+      if (this.head.next == null) {
          this.head = null;
       }
-      else{
+      else {
         this.head = this.head.next;
         this.head.prev = null;
       }
@@ -161,8 +158,7 @@ LinkedList.prototype.shift = () => {
 //Removal from the end of list
 LinkedList.prototype.pop = () => {
   let current = this.head;
-  while (current.next != null)
-  {
+  while (current.next != null) {
     current = current.next;
   }
   current.prev.next = null;
@@ -171,15 +167,14 @@ LinkedList.prototype.pop = () => {
 //Removal of certain value in the list
 LinkedList.prototype.erase = (value) => {
   let current = this.head;
-  while (current != null)
-  {
+  while (current != null) {
     if (current.value == value)
       break;
     current = current.next;
   }
 
   if (current != null){
-    if (current.next == null){
+    if (current.next == null) {
       current.prev.next = null;
       current.prev = null;
     } else if (current.prev == null) {
