@@ -4,30 +4,31 @@ public class DoubleLinkedList<T> {
     private Node last = null;
 
     private class Node {
-        T item;
-        Node next;
-        Node previous;
+        private T item;
+        private Node next;
+        private Node previous;
     }
 
-    public boolean isEmpty() { return last == null; }
+    public boolean isEmpty() {
+        return last == null;
+    }
 
-    public void push(T item) {
+    public void push(final T item) {
         Node oldLast = last;
         last = new Node();
         last.item = item;
         last.previous = oldLast;
-        if(oldLast!=null)
-        {
+        if (oldLast != null) {
             oldLast.next = last;
         }
     }
 
     public T pop() {
         T item = null;
-        if(!isEmpty()) {
+        if (!isEmpty()) {
             item = last.item;
             last = last.previous;
-            if(last!=null) {
+            if (last != null) {
                 last.next = null;
             }
         }
