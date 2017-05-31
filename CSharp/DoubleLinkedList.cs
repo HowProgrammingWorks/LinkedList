@@ -34,19 +34,17 @@ namespace LinkedList
             }
         }
 
-        public T printList()
+        public List<T> printList()
         {
+            List<T> res = new List<T>();
             T item = default(T);
-            if (!isEmpty())
+            while (!isEmpty())
             {
                 item = last.item;
                 last = last.previous;
-                if (last != null)
-                {
-                    last.next = null;
-                }
+                res.Add(item);
             }
-            return item;
+            return res;
         }
     }
 }
