@@ -12,9 +12,9 @@ namespace LinkedList
 
         private class Node
         {
-            public T item;
-            public Node next;
-            public Node previous;
+            internal T item;
+            internal Node next;
+            internal Node previous;
         }
 
         public bool isEmpty()
@@ -34,9 +34,10 @@ namespace LinkedList
             }
         }
 
-        public List<T> printList()
+        public List<T> returnList()
         {
             List<T> res = new List<T>();
+            Node temp = last;
             T item = default(T);
             while (!isEmpty())
             {
@@ -44,6 +45,7 @@ namespace LinkedList
                 last = last.previous;
                 res.Add(item);
             }
+            last = temp;
             return res;
         }
     }
