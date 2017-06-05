@@ -1,46 +1,90 @@
 import Foundation
 
-class Node {
-    var data: String
+public class LinkedList<T> {
     
-    var next: Node?
-    weak var previous: Node? //  weak to avoid memory leak. ARC do the trick.
-    // Every Node knows only its neighbours
-    init(with data: String) {
-        self.data = data
+    public class Node<T> {
+        var data: T
+        var next: Node<T>?
+        weak var previous: Node<T>? //  weak to avoid memory leak. ARC do the trick.
+        // Every Node knows only its neighbours
+        
+        init(data: T) {
+            self.data = data
+        }
     }
-}
-
-class LinkedList {
-    private var head: Node?
-    private var tail: Node? // List knows its head and tail.
     
-    var isEmpty: Bool {
+    fileprivate var head: Node<T>?
+    private var tail: Node<T>? // List knows its head and tail.
+    
+    public var isEmpty: Bool {
         return head == nil
     }
     
-    var first: Node? {
+    public var first: Node<T>? {
         return head
     }
     
-    var last: Node? {
+    public var last: Node<T>? {
         return tail
     }
     
-    func append(value: String) {
-        let newNode = Node(with: value)
-        
-        if let tailNode = tail {        // if tail exist
+    public func append(data: T) {
+        let newNode = Node(data: data)
+        if let tailNode = tail {
             newNode.previous = tailNode
             tailNode.next = newNode
-        }
-        else {
-            head = newNode             // This is the first append
+        } else {
+            head = newNode
         }
         tail = newNode
     }
     
-    func printList() {
+    
+    func removeAll() { // When head and tail is nil, weak ref will automatically delete its references one by one.
+        head = nil
+        tail = nil
+    }
+    
+    public func remove(node: Node<T>) -> T {
+        let prev = node.previous
+        let next = node.next
+        
+        if let prev = prev {
+            prev.next = next
+        } else {
+            head = next
+        }
+        next?.previous = prev
+        
+        if next == nil {
+            tail = prev
+        }
+        
+        node.previous = nil
+        node.next = nil
+        
+        return node.data
+    }
+    
+    
+    public func nodeAt(index: Int) -> Node<T>? {
+        if index >= 0 {
+            var node = head
+            var i = index
+            while node != nil {
+                if i == 0 { return node }
+                i -= 1
+                node = node!.next
+            }
+        }
+        return nil
+    }
+}
+
+extension LinkedList: CustomStringConvertible {
+    
+    public var description: String {
+        
         var text = "["
         var node = head
         
@@ -49,44 +93,23 @@ class LinkedList {
             node = node!.next
             if node != nil { text += ", " }
         }
-        text += "]"
-        print(text)
+        
+        return text + "]"
     }
-    
-    
-    func removeAll() {    // When head and tail is nil, weak ref will automatically delete its references one by one.
-        head = nil
-        tail = nil
-    }
-    
-    
-    func node(at index: Int) -> Node? {
-        if index >= 0 {
-            var node = head
-            var i = index
-            
-            while node != nil {
-                if i == 0 { return node } // Iterating over the List
-                i -= 1
-                node = node!.next
-            }
-        }
-        return nil
-    }
-    
 }
 
 
-let myList = LinkedList()
+let myList = LinkedList<Int>()
 
-myList.append(value: "1231")
-myList.append(value: "Car")
-myList.append(value: "Dog")
-myList.append(value: "Harry Potter")
 
-myList.printList() // [1231, Car, Dog, Harry Potter]
-let secondNode = myList.node(at: 1)?.data // Car
+myList.append(data: 1231)
+myList.append(data: 3)
+myList.append(data: 5)
+myList.append(data: 10)
+
+print(myList) // [1231, 3, 5, 10]
+let secondNode = myList.nodeAt(index: 1)?.data // 3
 
 myList.removeAll()
 
-myList.printList() // []
+print(myList) // []
