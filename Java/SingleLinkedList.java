@@ -1,5 +1,5 @@
 
-public class SingleLinkedList<T> {
+public class SingleLinkedList<T> implements LinkedList<T> {
 
     private Node last = null;
 

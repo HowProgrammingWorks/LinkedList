@@ -1,5 +1,5 @@
 
-public class DoubleLinkedList<T> {
+public class DoubleLinkedList<T> implements LinkedList<T> {
 
     private Node last = null;
 
