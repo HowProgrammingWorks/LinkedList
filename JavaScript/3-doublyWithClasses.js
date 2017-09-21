@@ -4,29 +4,31 @@ function LinkedList() {
   this.first = null;
   this.last = null;
   this.length = 0;
+
+  this.push = function(data) {
+    let currentNode = this.last;
+    const newNode = new Node(this, data);
+    newNode.prev = currentNode;
+    if (this.length === 0) this.first = newNode;
+    else currentNode.next = newNode;
+    this.last = newNode;
+    this.length++;
+    return newNode;
+  };
+
+  this.pop = function() {
+    if (this.length > 0) {
+      const node = this.last;
+      this.last = node.prev;
+      if (this.last) this.last.next = null;
+      node.list = null;
+      node.prev = null;
+      this.length--;
+      return node.data;
+    }
+  };
 }
 
-LinkedList.prototype.push = function(data) {
-  const node = new Node(this, data);
-  node.prev = this.last;
-  if (this.length === 0) this.first = node;
-  else this.last.next = node;
-  this.last = node;
-  this.length++;
-  return node;
-};
-
-LinkedList.prototype.pop = function() {
-  if (this.length > 0) {
-    const node = this.last;
-    this.last = node.prev;
-    if (this.last) this.last.next = null;
-    node.list = null;
-    node.prev = null;
-    this.length--;
-    return node.data;
-  }
-};
 
 function Node(list, data) {
   this.list = list;
@@ -41,7 +43,6 @@ list.push({ name: 'second' });
 list.push({ name: 'third' });
 
 console.dir(list.pop());
-//console.dir(list.last.next);
 console.dir(list.pop());
 console.dir(list.pop());
 console.dir(list.pop());
