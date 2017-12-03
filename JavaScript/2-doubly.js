@@ -1,38 +1,66 @@
 'use strict';
 
-function LinkedList() {
-  this.first = null;
-  this.last = null;
-  this.length = 0;
+class Node {
+  constructor(list, data) {
+    this.list = list;
+    this.data = data;
+    this.prev = null;
+    this.next = null;
+  }
 }
 
-LinkedList.prototype.push = function(data) {
-  const node = new Node(this, data);
-  node.prev = this.last;
-  if (this.length === 0) this.first = node;
-  else this.last.next = node;
-  this.last = node;
-  this.length++;
-  return node;
-};
-
-LinkedList.prototype.pop = function() {
-  if (this.length > 0) {
-    const node = this.last;
-    this.last = node.prev;
-    node.list = null;
-    node.prev = null;
-    node.next = null;
-    this.length--;
-    return node.data;
+class LinkedList {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.length = 0;
   }
-};
-
-function Node(list, data) {
-  this.list = list;
-  this.data = data;
-  this.prev = null;
-  this.next = null;
+  push(data) {
+    const node = new Node(this, data);
+    node.prev = this.last;
+    if (this.length === 0) this.first = node;
+    else this.last.next = node;
+    this.last = node;
+    this.length++;
+    return node;
+  }
+  pop() {
+    if (this.length > 0) {
+      const node = this.last;
+      this.last = node.prev;
+      node.list = null;
+      node.prev = null;
+      node.next = null;
+      this.length--;
+      return node.data;
+    }
+  }
+  findFirst(name) {
+    if (this.length > 0) {
+      let node = this.first;
+      if (node.data.name === name)
+        return node;
+      while (node !== this.last) {
+        node = node.next;
+        if (node.data.name === name)
+          return node;
+      }
+    }
+  }
+  findAll(name) {
+    const nodeArray = [];
+    if (this.length > 0) {
+      let node = this.first;
+      if (node.data.name === name)
+        nodeArray.push(node);
+      while (node !== this.last) {
+        node = node.next;
+        if (node.data.name === name)
+          nodeArray.push(node);
+      }
+    }
+    return nodeArray;
+  }
 }
 
 const list = new LinkedList();
