@@ -17,15 +17,14 @@ LinkedList.prototype.push = function(data) {
 };
 
 LinkedList.prototype.pop = function() {
-  if (this.length > 0) {
-    const node = this.last;
-    this.last = node.prev;
-    node.list = null;
-    node.prev = null;
-    node.next = null;
-    this.length--;
-    return node.data;
-  }
+  if (this.length === 0) return null;
+  const node = this.last;
+  this.last = node.prev;
+  node.list = null;
+  node.prev = null;
+  node.next = null;
+  this.length--;
+  return node.data;
 };
 
 function Node(list, data) {
@@ -34,6 +33,8 @@ function Node(list, data) {
   this.prev = null;
   this.next = null;
 }
+
+// Usage
 
 const list = new LinkedList();
 list.push({ name: 'first' });
