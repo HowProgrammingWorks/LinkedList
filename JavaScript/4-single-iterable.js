@@ -14,11 +14,14 @@ const list = () => {
       current: element,
       next() {
         const element = this.current;
-        if (!element) return { done: true };
+        if (!element) return {
+          done: true,
+          value: null
+        };
         this.current = element.prev;
         return {
-          value: element.data,
-          done: false
+          done: false,
+          value: element.data
         };
       }
     })
