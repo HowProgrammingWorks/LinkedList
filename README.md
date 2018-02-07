@@ -19,5 +19,13 @@
   - `.includes(data):Boolean`
   - `.map(item => f(item)):list`
   - другие методы
+- Декларативные аналоги
+  - аналог find: `.search(field, value):data`
+  - аналог filter: `.select({ field1: value1, field2: value2 }):list`
+  - алалог sort: `.order('field2'):list`
+- Асинхронные аналоги
+  - `.find(item => expression:Boolean, data => {})`
+  - `.filter(item => expression:Boolean, data:list => {})`
+  - другие методы с колбеками, аналоги на Promise
 - Реализовать циклический список
   - Выполнить перечисленное выше для циклического списка
