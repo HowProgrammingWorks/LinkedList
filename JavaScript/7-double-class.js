@@ -14,7 +14,7 @@ class LinkedList {
     this.last = node;
     this.length++;
     return node;
-  };
+  }
   pop() {
     if (this.length === 0) return null;
     const node = this.last;
@@ -24,7 +24,7 @@ class LinkedList {
     node.next = null;
     this.length--;
     return node.data;
-  };
+  }
 }
 
 function Node(list, data) {

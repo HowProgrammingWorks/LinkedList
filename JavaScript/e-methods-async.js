@@ -29,23 +29,23 @@ LinkedList.prototype.pop = function() {
 
 LinkedList.prototype.find = function(callback1, callback2) {
   let current = this.first;
-  let res = []
-  for(let i = 0; i < this.length; i++) {
-    if(callback1(current.data)) res.push(current.data);
+  const res = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback1(current.data)) res.push(current.data);
     current = current.next;
   }
   return res.forEach(item => callback2(item));
-}
+};
 
 LinkedList.prototype.filter = function(callback1, callback2) {
   let current = this.first;
-  let res = new LinkedList();
-  for(let i = 0; i < this.length; i++) {
-    if(callback1(current.data)) res.push(current.data);
+  const res = new LinkedList();
+  for (let i = 0; i < this.length; i++) {
+    if (callback1(current.data)) res.push(current.data);
     current = current.next;
   }
   return callback2(res);
-}
+};
 
 
 function Node(list, data) {

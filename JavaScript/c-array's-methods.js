@@ -29,56 +29,56 @@ LinkedList.prototype.pop = function() {
 
 LinkedList.prototype.find = function(callback) {
   let current = this.first;
-  let res = []
-  for(let i = 0; i < this.length; i++) {
-    if(callback(current.data)) res.push(current.data);
+  const res = [];
+  for (let i = 0; i < this.length; i++) {
+    if (callback(current.data)) res.push(current.data);
     current = current.next;
   }
   return res;
-}
+};
 
 LinkedList.prototype.filter = function(callback) {
   let current = this.first;
-  let res = new LinkedList();
-  for(let i = 0; i < this.length; i++) {
-    if(callback(current.data)) res.push(current.data);
+  const res = new LinkedList();
+  for (let i = 0; i < this.length; i++) {
+    if (callback(current.data)) res.push(current.data);
     current = current.next;
   }
   return res;
-}
+};
 
 LinkedList.prototype.indexOf = function(data) {
   let current = this.first;
-  let res = [];
-  for(let i = 0; i < this.length; i++) {
-    for(let key in current.data){
-      if(current.data[key] === data) res.push(i);
+  const res = [];
+  for (let i = 0; i < this.length; i++) {
+    for (const key in current.data) {
+      if (current.data[key] === data) res.push(i);
     }
     current = current.next;
   }
   return res;
-}
+};
 
 LinkedList.prototype.includes = function(data) {
   let current = this.first;
-  for(let i = 0; i < this.length; i++) {
-    for(let key in current.data){
-      if(current.data[key] === data) return true;
+  for (let i = 0; i < this.length; i++) {
+    for (const key in current.data) {
+      if (current.data[key] === data) return true;
     }
     current = current.next;
   }
   return false;
-}
+};
 
 LinkedList.prototype.map = function(callback) {
   let current = this.first;
-  let res = new LinkedList();
-  for(let i = 0; i < this.length; i++) {
+  const res = new LinkedList();
+  for (let i = 0; i < this.length; i++) {
     res.push(callback(current.data));
     current = current.next;
   }
   return res;
-}
+};
 
 function Node(list, data) {
   this.list = list;

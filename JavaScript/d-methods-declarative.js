@@ -29,31 +29,31 @@ LinkedList.prototype.pop = function() {
 
 LinkedList.prototype.search = function(field, value) {
   let current = this.first;
-  let res = []
-  for(let i = 0; i < this.length; i++) {
-    if(current.data[field] === value) res.push(current.data);
+  const res = [];
+  for (let i = 0; i < this.length; i++) {
+    if (current.data[field] === value) res.push(current.data);
     current = current.next;
   }
   return res;
-}
+};
 
 LinkedList.prototype.select = function(data) {
   let current = this.first;
-  let res = new LinkedList();
+  const res = new LinkedList();
   const equal = (obj1, obj2) => {
-    for(let key1 in obj1) {
-      for(let key2 in obj2) {
-        if(key1 === key2 && obj1[key1] === obj2[key2]) return true;
+    for (const key1 in obj1) {
+      for (const key2 in obj2) {
+        if (key1 === key2 && obj1[key1] === obj2[key2]) return true;
       }
     }
     return false;
-  }
-  for(let i = 0; i < this.length; i++) {
-    if(equal(current.data, data)) res.push(current.data);
+  };
+  for (let i = 0; i < this.length; i++) {
+    if (equal(current.data, data)) res.push(current.data);
     current = current.next;
   }
   return res;
-}
+};
 
 function Node(list, data) {
   this.list = list;

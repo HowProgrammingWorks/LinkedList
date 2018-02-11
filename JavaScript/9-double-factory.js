@@ -3,9 +3,9 @@
 const node = (prev, data) => {
   const next = null;
   const element = { prev, data, next };
-  if(prev) prev.next = element;
+  if (prev) prev.next = element;
   return element;
-}
+};
 
 // Usage
 
