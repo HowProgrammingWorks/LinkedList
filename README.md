@@ -1,10 +1,11 @@
 # Linked list data structure
 
-Задания:
+Задания (на выбор):
 - Реализовать двусвязный список на классах
 - Реализовать двусвязный список на замыканиях
 - Реализовать двусвязный список на фабриках
 - Добавить к двусвязному списку протокол iterable
+  - см. про `next()` и [`Symbol.iterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols)
 - Сделать методы для обхода списка
   - `.insert(index, data)`
   - `.delete(index, [count])`
