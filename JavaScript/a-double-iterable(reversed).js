@@ -5,22 +5,16 @@ const list = () => {
   return {
     push(data) {
       element = {
-        prev: element, data
+        prev: element || null, data
+      };
+      if (!firstEl) {
+        firstEl = element;
       };
       if (element.prev) element.prev.next = element;
       return element;
     },
     last: () => element,
-    first() {
-      if (!firstEl) {
-        firstEl = element;
-      }
-      if (firstEl && firstEl.prev) {
-        firstEl = firstEl.prev;
-        this.first();
-      }
-      return firstEl;
-    },
+    first: () => firstEl,
     [Symbol.iterator]: () => ({
       current: firstEl,
       next() {
