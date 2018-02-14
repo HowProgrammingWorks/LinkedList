@@ -23,4 +23,4 @@ list.push(obj1);
 list.push(obj2);
 list.push(obj3);
 
-console.dir(list.last);
+console.dir(list.last, { depth: 3 });
