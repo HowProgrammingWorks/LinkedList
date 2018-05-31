@@ -1,7 +1,7 @@
 'use strict';
 
-const List = require('./class-list');
-const { objectList } = require('./obj-list');
+const List = require('./class-list.js');
+const { objectList } = require('./obj-list.js');
 
 //Usage
 

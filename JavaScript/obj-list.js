@@ -5,11 +5,19 @@ const objectNode = (data) => ({ data, prev: null, next: null });
 const objectList = () => ({
   first: null,
   last: null,
+
   getNthNode(index) {
     if (Math.abs(index) > this.length()) return null;
-    let curr = (index >= 0) ? this.first : this.last;
-    const next = (index >= 0) ? 'next' : 'prev';
-    const pos = (index >= 0) ? index : ~index;
+    let pos, next, curr;
+    if (index >= 0) {
+      curr = this.first;
+      next = 'next';
+      pos = index;
+    } else {
+      curr = this.last;
+      next = 'prev';
+      pos = ~index;
+    }
     for (let i = 0; i < pos; i++) {
       curr = curr[next];
     }
@@ -30,10 +38,11 @@ const objectList = () => ({
   },
 
   insert(index, data) {
-    if (this.length() === 0 || index > this.length()) {
+    const len = this.length();
+    if (len === 0 || index > len) {
       return this.append(data);
     }
-    if (index === 0 || -index > this.length()) {
+    if (index === 0 || -index > len) {
       return this.prepend(data);
     }
     const pos = (index > 0) ? index : ++index;
@@ -90,9 +99,7 @@ const objectList = () => ({
   },
 
   length() {
-    let leng = 0;
-    leng = [...this].length;
-    return leng;
+    return [...this].length;
   },
 
   compare(second) {
