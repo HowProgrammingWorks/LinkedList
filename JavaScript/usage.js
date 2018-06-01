@@ -25,7 +25,6 @@ classList.prepend(2).prepend(1);
 classList.insert(3, 4).insert(4, 5);
 classList.append(obj).append(arr);
 
-
 objList.append(3).append(6).append(7);
 objList.prepend(2).prepend(1);
 objList.insert(3, 4).insert(4, 5);

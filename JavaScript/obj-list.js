@@ -150,8 +150,7 @@ const objectList = () => ({
   },
 
   includes(data) {
-    if (this.find(item => (item === data))) return true;
-    return false;
+   return !!this.find(item => (item === data));
   },
 
   indexOf(data) {
