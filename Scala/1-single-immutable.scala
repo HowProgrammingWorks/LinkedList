@@ -1,9 +1,6 @@
-package singleLinked
-
-
 sealed trait SingleLinked[+A] {
-  def ::[B >: A](x: B): SingleLinked[B] = {
-    SingleLinked.::(x, this)
+  def ::[B >: A](value: B): SingleLinked[B] = {
+    SingleLinked.::(value, this)
   }
 
   def foreach[B >: A](f: B => Unit): Unit = {
@@ -21,7 +18,7 @@ sealed trait SingleLinked[+A] {
 
 
 case object SNil extends SingleLinked[Nothing]
-case class Node[+A](value: A, next: SingleLinked[A]) extends SingleLinked[A]
+case class SNode[+A](value: A, tail: SingleLinked[A]) extends SingleLinked[A]
 
 
 object SingleLinked {
@@ -29,35 +26,51 @@ object SingleLinked {
 
   def apply[A](values: A*): SingleLinked[A] = values.foldLeft(SingleLinked.empty[A])((list, item) => item :: list)
 
-  def ::[A](x: A, list: SingleLinked[A]): SingleLinked[A] = Node(x, list)
+  def ::[A](value: A, list: SingleLinked[A]): SingleLinked[A] = SNode(value, list)
 
   def foreach[A](list: SingleLinked[A])(f: A => Unit): Unit = {
     list match {
       case SNil =>
-      case Node(x, next) =>
-        f(x)
-        next.foreach(f)
+      case SNode(value, tail) =>
+        f(value)
+        tail.foreach(f)
     }
   }
 
   def map[A, B](list: SingleLinked[A])(f: A => B): SingleLinked[B] = {
     list match {
       case SNil => SNil
-      case Node(x, next) => Node(f(x), next.map(f))
+      case SNode(value, tail) => SNode(f(value), tail.map(f))
     }
   }
 
   def merge[A](list1: SingleLinked[A], list2: SingleLinked[A]): SingleLinked[A] = {
     list1 match {
       case SNil => list2
-      case Node(x, next) => Node(x, merge(next, list2))
+      case SNode(value, tail) => SNode(value, merge(tail, list2))
     }
   }
 
   def flatMap[A, B](list: SingleLinked[A])(f: A => SingleLinked[B]): SingleLinked[B] = {
     list match {
       case SNil => SNil
-      case Node(x, next) => merge(f(x), next.flatMap(f))
+      case SNode(value, tail) => merge(f(value), tail.flatMap(f))
     }
+  }
+}
+
+object SingleExample {
+
+  def main(args: Array[String]): Unit = {
+    val list: SingleLinked[Int] = 1 :: 2 :: 3 :: SNil
+
+    list.foreach(item => print(s"$item\t"))
+    println()
+
+    list.map(_ + 1).foreach(item => print(s"$item\t"))
+    println()
+
+    list.flatMap(item => item :: item :: SNil).foreach(item => print(s"$item\t"))
+    println()
   }
 }
