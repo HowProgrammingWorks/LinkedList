@@ -32,6 +32,3 @@ let Example =
     let n6 : Node<string>= {prev = Some n5; data = "Black";}
 
     write (Some n6)
-    
-
-    
