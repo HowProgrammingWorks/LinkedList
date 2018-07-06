@@ -9,9 +9,9 @@ namespace HowProgrammingWorks.CS.SingleLinkedList
         {            
         }
 
-        public Node(Node<T> previous, T data)
+        public Node(Node<T> next, T data)
         {
-            Previous = previous;
+            Next = next;
             Data = data;
         }
 
@@ -20,7 +20,7 @@ namespace HowProgrammingWorks.CS.SingleLinkedList
         {
         }
 
-        public Node<T> Previous { get; set; }
+        public Node<T> Next { get; set; }
         public T Data { get; set; }
     }
 
@@ -28,20 +28,20 @@ namespace HowProgrammingWorks.CS.SingleLinkedList
     {
         public void Run()
         {
-            var n0 = new Node<string>("road");
-            var n1 = new Node<string>(n0, "the");
-            var n2 = new Node<string>(n1, "across");
-            var n3 = new Node<string>(n2, "running");
-            var n4 = new Node<string>(n3, "was");
-            var n5 = new Node<string>(n4, "cat");
-            var n6 = new Node<string>(n5, "Black");
+            var n6 = new Node<string>("road");
+            var n5 = new Node<string>(n6, "the");
+            var n4 = new Node<string>(n5, "across");
+            var n3 = new Node<string>(n4, "running");
+            var n2 = new Node<string>(n3, "was");
+            var n1 = new Node<string>(n2, "cat");
+            var n0 = new Node<string>(n1, "Black");
 
-            var currentNode = n6;
+            var currentNode = n0;
             
             while (currentNode != null)
             {
                 Console.Write($"{currentNode.Data} ");
-                currentNode = currentNode.Previous;
+                currentNode = currentNode.Next;
             }
 
             Console.WriteLine();

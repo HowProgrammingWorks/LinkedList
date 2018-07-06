@@ -13,7 +13,5 @@ let main argv =
     printf "Double linked list: \n"
     HowProgrammingWorks.FS.DoubleLinked.Example
     printf "\n"
-                   
-
 
     0 // return an integer exit code

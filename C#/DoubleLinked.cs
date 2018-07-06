@@ -16,8 +16,10 @@ namespace HowProgrammingWorks.CS.DoubleLinkedList
             var node = new Node<T>(this, data);
             node.Previous = this.Last;
 
-            if (this.Length == 0) this.First = node;
-            else this.Last.Next = node;
+            if (this.Length == 0) 
+                this.First = node;
+            else 
+                this.Last.Next = node;
 
             this.Last = node;
             this.Length++;
