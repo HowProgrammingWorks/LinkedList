@@ -76,13 +76,8 @@ let Example =
                 write(list)
 
     let list : LinkedList<string> = {first = None; last = None; count = 0;}
-    
-    push (list, "Black") |> ignore
-    push (list, "cat") |> ignore
-    push (list, "was") |> ignore
-    push (list, "running") |> ignore
-    push (list, "across") |> ignore
-    push (list, "the") |> ignore
-    push (list, "road") |> ignore
+
+    let words = [ "Black"; "cat"; "was"; "running"; "across"; "the"; "road"; ]
+    words |> List.iter (fun w -> push(list, w) |> ignore )
     
     write list
