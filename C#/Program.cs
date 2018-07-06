@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HowProgrammingWorks
+namespace HowProgrammingWorks.CS
 {
     class Program
     {
@@ -8,11 +8,10 @@ namespace HowProgrammingWorks
         {
             Console.Clear();
 
-            var singleLinkedListExample = new HowProgrammingWorks.SingleLinkedList.Example();
-            var doubleLinkedListExample = new HowProgrammingWorks.DoubleLinkedList.Example();
-            
-            //singleLinkedListExample.Run();
+            var singleLinkedListExample = new SingleLinkedList.Example();
+            var doubleLinkedListExample = new DoubleLinkedList.Example();
 
+            singleLinkedListExample.Run();
             doubleLinkedListExample.Run();
         }
     }

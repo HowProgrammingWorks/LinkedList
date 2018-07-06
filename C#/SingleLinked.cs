@@ -1,6 +1,6 @@
 using System;
 
-namespace HowProgrammingWorks.SingleLinkedList
+namespace HowProgrammingWorks.CS.SingleLinkedList
 {
     class Node<T>
     {

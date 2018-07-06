@@ -1,4 +1,4 @@
-module HowProgrammingWorks.DoubleLinked
+module HowProgrammingWorks.FS.DoubleLinked
 
 open System
 

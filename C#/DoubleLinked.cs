@@ -1,6 +1,6 @@
 using System;
 
-namespace HowProgrammingWorks.DoubleLinkedList
+namespace HowProgrammingWorks.CS.DoubleLinkedList
 {
     class DoubleLinkedList<T>
     {

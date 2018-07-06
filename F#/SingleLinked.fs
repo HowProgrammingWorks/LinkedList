@@ -1,4 +1,4 @@
-module HowProgrammingWorks.SingleLinked
+module HowProgrammingWorks.FS.SingleLinked
 
 open System
 
