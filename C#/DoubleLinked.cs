@@ -32,14 +32,13 @@ namespace HowProgrammingWorks.CS.DoubleLinkedList
 
             var node = this.Last;
 
+            this.Length--;
             this.Last = node.Previous;
 
             node.List = null;
             node.Previous = null;
             node.Next = null;
-
-            this.Length--;
-
+            
             return node.Data;
         }
 
@@ -81,11 +80,9 @@ namespace HowProgrammingWorks.CS.DoubleLinkedList
             list.Push("Black");
 
             while (list.Length > 0)
-            {
                 Console.Write($"{list.Pop()} ");
-            }
 
-            Console.ReadKey();
+            Console.WriteLine();
         }
     }
 }

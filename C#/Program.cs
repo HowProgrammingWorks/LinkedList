@@ -8,11 +8,13 @@ namespace HowProgrammingWorks.CS
         {
             Console.Clear();
 
-            var singleLinkedListExample = new SingleLinkedList.Example();
-            var doubleLinkedListExample = new DoubleLinkedList.Example();
+            Console.WriteLine("Linked list");
+            new SingleLinkedList.Example().Run();
+            Console.WriteLine();
 
-            singleLinkedListExample.Run();
-            doubleLinkedListExample.Run();
+            Console.WriteLine("Double linked list");
+            new DoubleLinkedList.Example().Run();
+            Console.WriteLine();
         }
     }
 }

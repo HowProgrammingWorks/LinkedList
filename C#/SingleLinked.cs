@@ -44,7 +44,7 @@ namespace HowProgrammingWorks.CS.SingleLinkedList
                 currentNode = currentNode.Previous;
             }
 
-            Console.ReadKey();
+            Console.WriteLine();
         }
     }
 }
