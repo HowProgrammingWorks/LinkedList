@@ -66,17 +66,14 @@ let pullFromStart (list : LinkedList<'T>) : 'T option =
 
 let Example =
 
-    let rec write (list : LinkedList<'T>) =
+    let rec write (list : LinkedList<string>) =
         match list.count with
             | 0 -> 
                 Console.WriteLine()
-            | _ ->
-                //let value = pull list;
-                let value = pullFromStart list;
-                Console.Write(String.Format("{0} ", value.Value))
+            | _ ->                
+                let value = pullFromStart list; //let value = pull list;
+                printf "%s " value.Value
                 write(list)
-
-
 
     let list : LinkedList<string> = {first = None; last = None; count = 0;}
     
@@ -86,6 +83,6 @@ let Example =
     push (list, "running") |> ignore
     push (list, "across") |> ignore
     push (list, "the") |> ignore
-    push (list,"road") |> ignore
+    push (list, "road") |> ignore
     
     write list

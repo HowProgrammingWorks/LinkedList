@@ -15,12 +15,12 @@ let pust node data =
 
 let Example =
 
-    let rec write (x : Node<'T> option)  =
+    let rec write (x : Node<string> option)  =
         match x with
             | None -> 
                 Console.WriteLine()
             | Some n -> 
-                Console.Write(String.Format("{0} ", n.data))
+                printf "%s " n.data
                 write n.prev
 
     let n0 : Node<string> = {prev = None; data = "road";}
