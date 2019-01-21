@@ -1,5 +1,7 @@
 # Linked list data structure
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/9KvA4hDDSjk/0.jpg)](https://www.youtube.com/watch?v=9KvA4hDDSjk)
+
 Задания (на выбор):
 - Реализовать двусвязный список на классах
 - Реализовать двусвязный список на замыканиях
