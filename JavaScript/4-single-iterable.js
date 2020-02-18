@@ -9,7 +9,9 @@ const list = () => {
       };
       return element;
     },
+
     last: () => element,
+
     [Symbol.iterator]: () => ({
       current: element,
       next() {
