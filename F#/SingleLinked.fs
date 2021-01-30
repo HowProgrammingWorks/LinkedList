@@ -32,3 +32,4 @@ let Example =
     let n0 : Node<string>= {next = Some n1; data = "Black";}
 
     write (Some n0)
+    

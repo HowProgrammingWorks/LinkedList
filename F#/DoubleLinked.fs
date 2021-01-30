@@ -81,3 +81,4 @@ let Example =
     words |> List.iter (fun w -> push(list, w) |> ignore )
     
     write list
+    
