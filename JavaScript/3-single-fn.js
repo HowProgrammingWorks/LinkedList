@@ -1,7 +1,7 @@
 'use strict';
 
-const node = (data) => {
-  const element = (data) => {
+const node = data => {
+  const element = data => {
     const next = node(data);
     next.prev = element;
     return next;
@@ -13,7 +13,7 @@ const node = (data) => {
 /*
 
 const node = (data, element) => (element = Object.assign(
-  (data) => Object.assign(node(data), { prev: element }), { data }
+  data => Object.assign(node(data), { prev: element }), { data }
 ));
 
 */

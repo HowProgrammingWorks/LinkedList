@@ -4,6 +4,7 @@ class List {
   constructor() {
     this.last = null;
   }
+
   push(data) {
     const prev = this.last;
     const element = { prev, data };

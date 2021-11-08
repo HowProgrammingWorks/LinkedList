@@ -20,6 +20,7 @@ LinkedList.prototype.pop = function() {
   if (this.length === 0) return null;
   const node = this.last;
   this.last = node.prev;
+  if (this.last) this.last.next = null;
   node.list = null;
   node.prev = null;
   node.next = null;
