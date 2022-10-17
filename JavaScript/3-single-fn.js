@@ -1,7 +1,7 @@
 'use strict';
 
-const node = data => {
-  const element = data => {
+const node = (data) => {
+  const element = (data) => {
     const next = node(data);
     next.prev = element;
     return next;
