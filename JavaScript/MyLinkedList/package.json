@@ -1,0 +1,11 @@
+{
+  "name": "lab1",
+  "version": "1.0.0",
+  "description": "the first laboratory work on NodeJS",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "author": "Volodymyr Novak",
+  "license": "ISC"
+}
