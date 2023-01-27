@@ -21,9 +21,9 @@ LinkedList.prototype.pop = function() {
   const node = this.last;
   this.last = node.prev;
   if (this.last) this.last.next = null;
+  else this.first = null;
   node.list = null;
   node.prev = null;
-  node.next = null;
   this.length--;
   return node.data;
 };
