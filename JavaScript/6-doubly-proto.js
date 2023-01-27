@@ -24,7 +24,6 @@ LinkedList.prototype.pop = function() {
   else this.first = null;
   node.list = null;
   node.prev = null;
-  node.next = null;
   this.length--;
   return node.data;
 };
