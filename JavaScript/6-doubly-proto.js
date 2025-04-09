@@ -6,7 +6,7 @@ function LinkedList() {
   this.length = 0;
 }
 
-LinkedList.prototype.push = function(data) {
+LinkedList.prototype.push = function (data) {
   const node = new Node(this, data);
   node.prev = this.last;
   if (this.length === 0) this.first = node;
@@ -16,7 +16,7 @@ LinkedList.prototype.push = function(data) {
   return node;
 };
 
-LinkedList.prototype.pop = function() {
+LinkedList.prototype.pop = function () {
   if (this.length === 0) return null;
   const node = this.last;
   this.last = node.prev;

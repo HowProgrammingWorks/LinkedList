@@ -5,7 +5,8 @@ const list = () => {
   return {
     push(data) {
       element = {
-        prev: element, data,
+        prev: element,
+        data,
       };
       return element;
     },
@@ -16,17 +17,19 @@ const list = () => {
       current: element,
       next() {
         const element = this.current;
-        if (!element) return {
-          done: true,
-          value: null
-        };
+        if (!element) {
+          return {
+            done: true,
+            value: null,
+          };
+        }
         this.current = element.prev;
         return {
           done: false,
-          value: element.data
+          value: element.data,
         };
-      }
-    })
+      },
+    }),
   };
 };
 
