@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>HowProgrammingWorks</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="SingleLinked.fs" />
+    <Compile Include="DoubleLinked.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>

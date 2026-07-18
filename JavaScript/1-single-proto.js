@@ -1,15 +1,17 @@
 'use strict';
 
-function Node(prev, data) {
-  this.prev = prev;
+function Node(next, data) {
+  this.next = next;
   this.data = data;
 }
 
 // Usage
 
-const n1 = new Node(null, { name: 'first' });
-const n2 = new Node(n1, { name: 'second' });
-const n3 = new Node(n2, { name: 'third' });
+const n3 = new Node(null, { name: 'third' });
+const n2 = new Node(n3, { name: 'second' });
+const n1 = new Node(n2, { name: 'first' });
+
+
 
 console.dir(n1);
 console.dir(n2);

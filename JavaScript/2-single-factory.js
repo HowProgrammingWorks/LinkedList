@@ -1,12 +1,14 @@
 'use strict';
 
-const node = (prev, data) => ({ prev, data });
+const node = (next, data) => ({ next, data });
 
 // Usage
 
-const n1 = node(null, { name: 'first' });
-const n2 = node(n1, { name: 'second' });
-const n3 = node(n2, { name: 'third' });
+const n3 = node(null, { name: 'third' });
+const n2 = node(n3, { name: 'second' });
+const n1 = node(n2, { name: 'first' });
+
+
 
 console.dir(n1);
 console.dir(n2);
